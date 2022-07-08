@@ -1,4 +1,6 @@
 import Logo from "./Logo";
+import CartWidget from "./CartWidget";
+
 const NavBar = () => {
     return (
       <>
@@ -21,6 +23,7 @@ const NavBar = () => {
                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Pedidos
                 </a>
+
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a className="dropdown-item" href="#">Arma tu pedido</a></li>
                   <li><hr className="dropdown-divider"/></li>
@@ -30,9 +33,10 @@ const NavBar = () => {
 
             </ul>
             <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-              <button className="btn btn-outline-success" type="submit">Search</button>
+              <input className="form-control me-2" type="search" placeholder="" aria-label="Search"/>
+              <button className="btn btn-outline-success" type="submit">Buscar</button>
             </form>
+            <CartWidget/>
           </div>
         </div>
       </nav>
