@@ -7,7 +7,7 @@ const CartWidget = () => {
         <img 
         style={{width:80}}
         src={carrito} alt="carrito"/>
-        <h2>{amount}</h2>
+        <h2 style={{paddingRight:50}}>{amount}</h2>
         </>
     )
 }
