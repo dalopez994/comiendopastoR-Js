@@ -1,7 +1,7 @@
 import imgLogo from "../assets/img/comiendopasto_logo.png"
 
 const Logo = () => {
-    const amount = 4;
+
     return (
         <>
         <img 

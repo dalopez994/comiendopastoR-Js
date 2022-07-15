@@ -14,7 +14,7 @@ function App() {
     <>
     <NavBar/>
     <ItemListContainer greeting={data.greeting}/>
-    <ItemCount stock={10} initial={2} />
+    <ItemCount stock={10} initial={1} />
     </> 
   );
 }

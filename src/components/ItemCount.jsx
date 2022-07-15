@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
+import pepino from "../assets/img/pepino.png";
 
 function ItemCount(props) {
     const [count, setCount] = useState(props.initial);
@@ -20,12 +21,16 @@ function ItemCount(props) {
       <>
         <section> 
         <div>
-          <button onClick={handleSubstract()}> - </button>
-          <span> {count} </span>
-          <button onClick={handleAdd()}> + </button>
-          <div>
+          <h2>Pepino</h2>
+          <img 
+          style={{width:80}}
+          src={pepino} alt="berenjena"/>
 
-          </div>
+
+          <button onClick={handleSubstract}> - </button>
+          <span> {count} </span>
+          <button onClick={handleAdd}> + </button>
+
         </div>
 
         </section>
