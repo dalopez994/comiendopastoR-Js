@@ -1,34 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../contexts/CartContext";
+import CartItem from "../components/CartItem";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const [totalPrice, setTotalPrice] = useState(0);
-  const { cartItems } = useContext(CartContext);
-  useEffect(() => {
-    let total = 0;
-    cartItems.forEach((item) => {
-      total += parseInt(item.price);
-    });
-    setTotalPrice(total);
-  }, [cartItems]);
-  return (
-    <>
-      <ul>
-        {cartItems.map((item) => (
-          <>
-          <div style={{display: "flex"}}>
-          <img src={item.pictureUrl} style={{width:100}} />      
-          <div  >
-            <h2>{item.title}</h2>
-            <h5>${item.price}</h5>
-            </div>
-            </div>
-          </>
+const {cartItems, removeItem, clear,total} = useContext(CartContext);
+const tot=total()
+return (
+  <>
+    {cartItems.length === 0 ? (
+      <>
+        El carrito esta vacio!
+        <Link to={"/"}>Volver</Link>
+      </>
+    ) : (
+      <>
+        {cartItems.map((element) => (
+          <CartItem item={element.item} quantity={element.quantity} removeItem={removeItem} />
         ))}
-      </ul>
-      <h1 className="bg-primary">{`Total de tu compra $${totalPrice}`}</h1>
-    </>
-  );
+        <button className="bg-red-500 p-2 " onClick={() => clear()}>
+          Vaciar carrito
+        </button>
+        <h1>El total de la compra es de : {tot}</h1>
+      </>
+    )}
+  </>
+);
 };
 
 export default Cart;

@@ -21,8 +21,15 @@ const CartProvider = (props) => {
   const removeItem=(itemId)=>{
     setCartItems(cartItems.filter((e) => e.item.id !== itemId))
   }
+
+  const total =()=>{
+    return cartItems.reduce(
+      (previousValue, currentValue) => previousValue + currentValue.item.price * currentValue.quantity,
+    0
+  );
+  }
   return (
-    <CartContext.Provider value={{ addItem,isInCart,clear,removeItem,cartItems, setCartItems }}>
+    <CartContext.Provider value={{ addItem,isInCart,clear,removeItem,cartItems, setCartItems, total }}>
       {props.children}
     </CartContext.Provider>
   );
