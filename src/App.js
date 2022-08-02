@@ -6,11 +6,13 @@ import ItemListContainer from "./components/ItemListContainer";
 
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
+import CartProvider from "./contexts/CartContext";
+import Cart from "./components/Cart";
 
 function App() {
   return (
     <>
+    <CartProvider>
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -23,9 +25,10 @@ function App() {
               <div style={{ backgroundColor: "red" }}> ERROR</div>
             }
           />
-          <Route path="/cart" element={<div>Carrito</div>} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
+    </CartProvider>
     </>
   );
 }
