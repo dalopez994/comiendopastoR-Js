@@ -6,6 +6,19 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import "bootstrap";
 
+import { initializeApp } from "firebase/app";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAfb6B7dXvO6hBibG960Cf0c1KIIz-g9OA",
+  authDomain: "comiendopasto-rjs.firebaseapp.com",
+  projectId: "comiendopasto-rjs",
+  storageBucket: "comiendopasto-rjs.appspot.com",
+  messagingSenderId: "319780112765",
+  appId: "1:319780112765:web:4af9d12e7a27a931c2a414"
+};
+initializeApp(firebaseConfig);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

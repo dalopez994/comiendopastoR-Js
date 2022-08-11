@@ -3,6 +3,7 @@ import ItemList from "./ItemList";
 import data from "./utils/data";
 import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const { name } = useParams();
@@ -14,18 +15,18 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     setLoading(true);
-    promise.then((res) => {
-      const products = res;
-      if (name) {
-        setItems(products.filter((product) => product.category == name));
-      } else {
-        setItems(products);
-      }
+    const db = getFirestore();
+    const itemsCollection = collection(db, "items");
+    getDocs(itemsCollection).then((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setItems(data);
       setLoading(false);
     });
   }, [name]);
 
-  if (loading) return <Spinner />;
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <>
