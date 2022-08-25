@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
-import data from "./utils/data";
 import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
@@ -8,10 +7,8 @@ import { getFirestore, collection, getDocs } from "firebase/firestore";
 const ItemListContainer = () => {
   const { name } = useParams();
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const promise = new Promise((resolve) => {
-    setTimeout(() => resolve(data), 2000);
-  });
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
