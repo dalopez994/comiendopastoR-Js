@@ -11,8 +11,8 @@ const handleSubmit = (e) => {
   e.preventDefault();
   const inputs = document.getElementsByTagName("input");
   console.log(inputs[0]);
-  const data = Array.from(inputs).map((input, index) => input.value);
-  sendOrder(totalPrice, { name: data[0], mail: data[1], phone: data[2] });
+  const data = Array.from(inputs).map((input) => input.value);
+  sendOrder(totalPrice, { nombre: data[0], direccion: data[1], telefono: data[2] });
 };
 const tot=total()
 return (
@@ -27,17 +27,17 @@ return (
         {cartItems.map((element) => (
           <CartItem item={element.item} quantity={element.quantity} removeItem={removeItem} addItem={addItem}/>
         ))}
-        <button className="bg-red-500 p-2 " onClick={() => clear()}>
+        <button className="btn btn-dark" onClick={() => clear()}>
           Vaciar carrito
         </button>
         <h1>El total de la compra es de : {tot}</h1>
         <form onSubmit={handleSubmit}>
-        <input type="text" />
-        <input type="email" />
-        <input type="tel" />
-        <button
+        <input type="text" placeholder="Nombre"/>
+        <input type="direccion" placeholder="Dirección"/>
+        <input type="tel" placeholder="Teléfono"/>
+        <button 
           type="submit"
-          className="btn btn-info"
+          className="btn btn-success"
         >
           Preparar pedido 🙌  
         </button>
@@ -49,3 +49,5 @@ return (
 };
 
 export default Cart;
+
+
